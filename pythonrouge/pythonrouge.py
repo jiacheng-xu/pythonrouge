@@ -94,6 +94,7 @@ class Pythonrouge:
         self.xml_dir = xml_dir
         # evaluation parameter - you can check details of below in ROUGE
         # directory pythonrouge/RELEASE-1.5.5/README.txt
+        self.default_conf = default_conf
         self.n_gram = n_gram
         self.ROUGE_SU4 = ROUGE_SU4
         self.ROUGE_L = ROUGE_L
