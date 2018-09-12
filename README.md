@@ -10,8 +10,19 @@ You can install pythonrouge in both ways
 
 ```
 # not using pip
-git clone https://github.com/tagucci/pythonrouge.git
+
+git clone https://github.com/jiacheng-xu/pythonrouge.git
+cd pythonrouge/
 python setup.py install
+cd pythonrouge/RELEASE-1.5.5/data/
+rm WordNet-2.0.exc.db # only if exist
+cd WordNet-2.0-Exceptions
+rm WordNet-2.0.exc.db # only if exist
+./buildExeptionDB.pl . exc WordNet-2.0.exc.db
+cd ../
+ln -s WordNet-2.0-Exceptions/WordNet-2.0.exc.db WordNet-2.0.exc.db
+cd ../../../..
+
 
 # using pip
 pip install git+https://github.com/tagucci/pythonrouge.git
