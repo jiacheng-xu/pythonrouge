@@ -22,7 +22,7 @@ class Pythonrouge:
                  ROUGE_W_Weight=1.2, stemming=True, stopwords=False,
                  word_level=True, length_limit=True, length=100, use_cf=False,
                  cf=95, scoring_formula="average", resampling=True,
-                 samples=1000, favor=True, p=0.5):
+                 samples=1000, favor=True, p=0.5, default_conf=True):
         """
         n_gram: Compute ROUGE-N up to max-ngram length will be computed.
         ROUGE_SU4: Compute ROUGE-SU4 measures unigram and skip-bigram
@@ -197,6 +197,10 @@ class Pythonrouge:
         self.make_xml()
         rouge_cmd = ['perl', self.ROUGE_path, "-e", self.data_path, "-a"]
         rouge_cmd += '-n {}'.format(self.n_gram).split()
+        if self.default_conf:
+          rouge_cmd += '-c 95 -2 -1 -U -r 1000 -w 1.2'.split()
+          rouge_cmd.append(self.setting_file)
+          return rouge_cmd
         # ROUGE-SU4
         if self.ROUGE_SU4:
             rouge_cmd += '-2 4 -u'.split()
