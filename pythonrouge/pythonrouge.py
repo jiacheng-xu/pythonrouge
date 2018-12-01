@@ -199,7 +199,7 @@ class Pythonrouge:
         rouge_cmd = ['perl', self.ROUGE_path, "-e", self.data_path, "-a"]
         rouge_cmd += '-n {}'.format(self.n_gram).split()
         if self.default_conf:
-          rouge_cmd += '-c 95 -2 -1 -U -r 1000 -w 1.2'.split()
+          rouge_cmd += '-c 95 -m -n 2'.split()
           rouge_cmd.append(self.setting_file)
           return rouge_cmd
         # ROUGE-SU4
